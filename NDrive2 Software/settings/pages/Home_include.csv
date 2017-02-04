@@ -1,0 +1,3 @@
+item;regid;regidExtension;bit;bits;bitNums;invert;pos;size;expand;isSigned;isHex;visible;enable;clickable;percent100;floatdivisor;decimals;parent;label;format;image;imageOff;condition;expression;descText;tooltip;fontName;fontDesc;fontHeight;fontWidth;fontGap;fontWeight;fontFamily;border;onTop;isCaption;isUnit;colourText;colourBack;where;textOff;textOn;URL;command;script;action;descColour;unitsColour;descWidth;unitsWidth;spacing;descLeft;descOffsetX;descOffsetY;unitsOffsetX;unitsOffsetY;step;style;units
+background;;;;;;;;;;;;;;;;;;;background;;Startup_2014;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+button;;;;;;;[380,135];[180,40];;;;;;;;;;;;;background;;;;;;;;;;;;;;;;;RGB(250,250,250);;;;;http://www.unitek-online.de;;;;RGB(225,245,245);;;;;;;;;;;;

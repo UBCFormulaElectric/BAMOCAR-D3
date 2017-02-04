@@ -1,0 +1,41 @@
+!Spectrum Digital Flash Programmer project file
+!Generated file do not edit
+[SDFlash]
+
+[HEADER]
+Format = Spectum Digital Flash Program Project
+Version = 1.00
+
+[PROJECT]
+[TARGET]
+Processor = GENERIC
+DriverFile = C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_3_serial\f2812\F281xRS232Flash.dll
+Emulator = SERIAL_FLASH
+EmulatorAddress = C1
+BoardFile = C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_3_serial\f2812\ccBrd028x.dat
+ProcessorName = cpu_0
+
+[ERASE]
+AlgorithmFile = C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_3_serial\f2812\F2812SerialFlash.out
+Timeout = 0
+UserOption1 = 03ff
+UserOption2 = 0
+UserOption3 = 3
+UserOption4 = 500
+
+[PROGRAMMING]
+AlgorithmFile = C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_3_serial\f2812\F2812SerialFlash.out
+Timeout = 0
+FlashDataFile = C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_3_serial\f2812\F2812FlashTest.out
+UserOption1 = 0
+UserOption2 = 0
+UserOption3 = 0
+UserOption4 = 0
+
+[VERIFY]
+AlgorithmFile = C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_3_serial\f2812\F2812SerialFlash.out
+Timeout = 0
+UserOption1 = 0
+UserOption2 = 0
+UserOption3 = 0
+UserOption4 = 0

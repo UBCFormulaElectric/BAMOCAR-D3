@@ -1,0 +1,3 @@
+-z -q -m"./Debug/F2809FlashTest.map" -o"./Debug/F2809FlashTest.out" -w -x -i"C:/CCStudio_v3.3/C2000/xdais/lib" -i"C:/CCStudio_v3.3/bios_5_31_02/packages/ti/bios/lib" -i"C:/CCStudio_v3.3/bios_5_31_02/packages/ti/rtdx/lib/c2000" -i"C:/CCStudio_v3.3/C2000/cgtools/lib"
+"C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_1_serial\f2809\f2809FlashTest\F2809.cmd"
+"C:\CCStudio_v3.3\specdig\sdflash\myprojects\sdf28xx_v3_1_serial\f2809\f2809FlashTest\Debug\F2809FlashTest.obj"

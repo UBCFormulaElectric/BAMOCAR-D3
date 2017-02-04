@@ -1,0 +1,108 @@
+******************************************************************************
+        TMS320C2000 COFF Linker PC v5.0.0                      
+******************************************************************************
+>> Linked Tue Nov 27 16:45:40 2007
+
+OUTPUT FILE NAME:   <./Debug/F2809FlashTest.out>
+ENTRY POINT SYMBOL: 0
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH_H               003d8000   00004000  00004000  00000000  RWIX
+  FLASH_G               003dc000   00004000  00004000  00000000  RWIX
+  FLASH_F               003e0000   00004000  00004000  00000000  RWIX
+  FLASH_E               003e4000   00004000  00004000  00000000  RWIX
+  FLASH_D               003e8000   00004000  00004000  00000000  RWIX
+  FLASH_C               003ec000   00004000  00004000  00000000  RWIX
+  FLASH_B               003f0000   00004000  00004000  00000000  RWIX
+  FLASH_A               003f4000   00003ff8  00003ff8  00000000  RWIX
+  PASSWORDS             003f7ff8   00000008  00000000  00000008  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.data      0    00000000    00000000     UNINITIALIZED
+
+.text      0    00000000    00000000     UNINITIALIZED
+
+flash_H    0    003d8000    00004000     
+                  003d8000    00004000     F2809FlashTest.obj (flash_H)
+
+flash_G    0    003dc000    00004000     
+                  003dc000    00004000     F2809FlashTest.obj (flash_G)
+
+flash_F    0    003e0000    00004000     
+                  003e0000    00004000     F2809FlashTest.obj (flash_F)
+
+flash_E    0    003e4000    00004000     
+                  003e4000    00004000     F2809FlashTest.obj (flash_E)
+
+flash_D    0    003e8000    00004000     
+                  003e8000    00004000     F2809FlashTest.obj (flash_D)
+
+flash_C    0    003ec000    00004000     
+                  003ec000    00004000     F2809FlashTest.obj (flash_C)
+
+flash_B    0    003f0000    00004000     
+                  003f0000    00004000     F2809FlashTest.obj (flash_B)
+
+flash_A    0    003f4000    00003ff8     
+                  003f4000    00003ff8     F2809FlashTest.obj (flash_A)
+
+.bss       1    00000000    00000000     UNINITIALIZED
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+00000000   .bss
+00000000   .data
+00000000   .text
+ffffffff   ___TI_pprof_out_hndl
+ffffffff   ___TI_prof_var_size
+ffffffff   ___TI_prof_var_start
+ffffffff   ___binit__
+00000000   ___bss__
+ffffffff   ___c_args__
+00000000   ___data__
+00000000   ___edata__
+00000000   ___end__
+00000000   ___etext__
+00000000   ___text__
+ffffffff   binit
+00000000   edata
+00000000   end
+00000000   etext
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   .bss
+00000000   .data
+00000000   .text
+00000000   ___bss__
+00000000   ___data__
+00000000   ___edata__
+00000000   ___end__
+00000000   ___etext__
+00000000   ___text__
+00000000   edata
+00000000   end
+00000000   etext
+ffffffff   ___TI_pprof_out_hndl
+ffffffff   ___TI_prof_var_size
+ffffffff   ___TI_prof_var_start
+ffffffff   ___binit__
+ffffffff   ___c_args__
+ffffffff   binit
+
+[18 symbols]

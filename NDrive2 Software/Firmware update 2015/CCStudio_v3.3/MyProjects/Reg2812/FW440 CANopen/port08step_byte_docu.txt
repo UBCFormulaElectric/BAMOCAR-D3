@@ -1,0 +1,871 @@
+
+port08step_byte Documentation
+- 04-25-2012 - 11:10AM -
+
+
+CANopen device using port's CANopen library
+
+- - - - - - - - Object Description - - - - - - - - - -
+-------------------------------------------------------
+
+============ Line 0 ============
+
+Summary of line 0:
+---------------------------------------------------------------------------
+1000	Device Type
+1001	Error Register
+1003	Pre-defined Error Field
+1005	COB-ID SYNC
+1014	COB-ID EMCY
+1016	Heartbeat Consumer Entries
+1017	Producer Heartbeat Time
+1018	Identity Object
+1200	Server SDO Parameter 1
+1400	Receive PDO Communication Parameter 1
+1401	Receive PDO Communication Parameter 2
+1402	Receive PDO Communication Parameter 3
+1403	Receive PDO Communication Parameter 4
+1600	Receive PDO Mapping Parameter 1
+1601	Receive PDO Mapping Parameter 2
+1602	Receive PDO Mapping Parameter 3
+1603	Receive PDO Mapping Parameter 4
+1800	Transmit PDO Communication Parameter 1
+1801	Transmit PDO Communication Parameter 2
+1802	Transmit PDO Communication Parameter 3
+1803	Transmit PDO Communication Parameter 4
+1A00	Transmit PDO Mapping Parameter 1
+1A01	Transmit PDO Mapping Parameter 2
+1A02	Transmit PDO Mapping Parameter 3
+1A03	Transmit PDO Mapping Parameter 4
+2000	statusmap
+2001	errormap
+2002	logicmap
+2003	posref
+2004	speedref
+2005	speedlimit
+2006	speedactual
+2007	currentactual
+2008	serien_nummer
+2009	axis
+200A	calibrate
+200B	version
+200C	posactual
+200D	rampacc
+200E	rampdec
+200F	ramplim
+2010	cancel_error
+
+
+Communication Segment
+
+
+Variable - 1000 - Device Type:
+---------------------------------------------------------------------------
+The device type specifies the kind of device.
+The lower 16 bit contain the device profile number
+and the upper 16 bit an additional information.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0000000  0x0        0xFFFFFFFF 	u32	CONST	n.a.
+
+
+
+Variable - 1001 - Error Register:
+---------------------------------------------------------------------------
+The error register is a field of 8 bits, each for a certain error type.
+If an error occurs the bit has to be set.
+ 
+Bit Meaning
+0  generic error
+1  current
+2  voltage
+3  temperature
+4  communication error (overrun, error state)
+5  device profile specific
+6  reserved
+7  manufacturer specific
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RO	0
+
+
+
+Array - 1003 - Pre-defined Error Field:
+---------------------------------------------------------------------------
+This object holds errors that have occurred on the device and
+have been signalled via Emergency Object. It is an error history.
+Writing to sub index 0 deletes the entire error history.
+1003:000 Number of Errors
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000000 0x00000000 0x000000FE 	u32	RW	n.a.
+
+1003:001 Standard Error Field
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Variable - 1005 - COB-ID SYNC:
+---------------------------------------------------------------------------
+COB-ID of the Synchronization object.
+The device generates a SYNC message if bit 30 is set.
+The meaning of other bits is equal to the other communication objects.
+Value      Min         Max         Unit	Type	Access	Mapping
+0x80000080 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+
+
+Variable - 1014 - COB-ID EMCY:
+---------------------------------------------------------------------------
+COB-ID used for emergency message (Emergency Producer).
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000080 0x00000001 0xFFFFFFFF 	u32	RO	0
+
+
+
+Array - 1016 - Heartbeat Consumer Entries:
+---------------------------------------------------------------------------
+The consumer heartbeat time defines the expected heartbeat cycle
+time and thus has to be higher than the corresponding producer heartbeat
+time configured on the device producing this heartbeat.
+
+The bits 31 - 24 of each sub-index has to be 0.
+The bits 23 - 16 contain the node-id.
+The lower 16 bits contain the heartbeat time
+1016:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x01       0x1        0x7F       	u32	RO	n.a.
+
+1016:001 Consumer Heartbeat Time 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000000 0x0        0x02FFFFFF 	u32	RW	n.a.
+
+
+
+Variable - 1017 - Producer Heartbeat Time:
+---------------------------------------------------------------------------
+The producer heartbeat time defines the cycle 
+time of the heartbeat. If the time is 0 it is not used.
+The time has to be a multiple of 1 msec
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000000 0x0        0xFFFF     	u16	RW	n.a.
+
+
+
+Record - 1018 - Identity Object:
+---------------------------------------------------------------------------
+This object contains general information about the
+device.
+Sub-Index 1 contains a unique value allocated each manufacturer.
+Sub-Index 2 identifies the manufacturer specific product code (device version).
+Sub-Index 3 contains the revision number.
+Bit 31-16 is the major revision number and Bit 15-0 the minor revision number.
+Sub-Index 4 identifies a manufacturer specific serial number.
+1018:000 number of entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x4        0x1        0x4        	u8	RO	n.a.
+
+1018:001 Vendor Id
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x02e7     0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1018:002 Product Code
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1018:003 Revision number
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1018:004 Serial number
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1200 - Server SDO Parameter 1:
+---------------------------------------------------------------------------
+The object contains the parameters for the SDOs for which
+the device is the server.
+1200:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x02       0x02       0x02       	u8	RO	n.a.
+
+1200:001 COB-ID Client -> Server
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000600 0x00000600 0xBFFFFFFF 	u32	RO	n.a.
+
+1200:002 COB-ID Server -> Client
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000580 0x00000580 0xBFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1400 - Receive PDO Communication Parameter 1:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1400:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x05       0x02       0x05       	u8	RO	n.a.
+
+1400:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x200      0x1        0xFFFFFFFF 	u32	RW	n.a.
+
+1400:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+1400:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0000     0xFFFF     100 us	u16	RW	n.a.
+
+1400:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RW	0
+
+1400:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x100      0x0        0xFFFF     ms	u16	RW	n.a.
+
+
+
+Record - 1401 - Receive PDO Communication Parameter 2:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1401:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x02       0x02       0x05       	u8	RO	n.a.
+
+1401:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000300 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+1401:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+
+
+Record - 1402 - Receive PDO Communication Parameter 3:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1402:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x02       0x02       0x05       	u8	RO	n.a.
+
+1402:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000400 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+1402:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+
+
+Record - 1403 - Receive PDO Communication Parameter 4:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1403:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x05       0x02       0x05       	u8	RO	0
+
+1403:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000500 0x00000001 0xFFFFFFFF 	u32	RW	0
+
+1403:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	0
+
+1403:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0000     0xFFFF     100 us	u16	RW	n.a.
+
+1403:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RW	0
+
+1403:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	n.a.
+
+
+
+Record - 1600 - Receive PDO Mapping Parameter 1:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)
+1600:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x01       0x0        0x40       	u8	RO	n.a.
+
+1600:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20030020 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1601 - Receive PDO Mapping Parameter 2:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)
+1601:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x01       0x0        0x40       	u8	RO	n.a.
+
+1601:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20040010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1602 - Receive PDO Mapping Parameter 3:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)
+1602:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x04       0x0        0x40       	u8	RO	n.a.
+
+1602:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20050010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1602:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x200D0010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1602:003 Mapping Entry 3
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x200E0010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1602:004 Mapping Entry 4
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x200F0010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1603 - Receive PDO Mapping Parameter 4:
+---------------------------------------------------------------------------
+The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)
+1603:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x01       0x0        0xFF       	u8	RO	n.a.
+
+1603:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20100010 0x0        0xFFFFFFF  	u32	RO	n.a.
+
+
+
+Record - 1800 - Transmit PDO Communication Parameter 1:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1800:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x05       0x02       0x06       	u8	RO	n.a.
+
+1800:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000180 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+1800:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+1800:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0000     0xFFFF     100 us	u16	RW	n.a.
+
+1800:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RW	0
+
+1800:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	n.a.
+
+
+
+Record - 1801 - Transmit PDO Communication Parameter 2:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1801:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x05       0x02       0x06       	u8	RO	n.a.
+
+1801:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000280 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+1801:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+1801:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0000     0xFFFF     100 us	u16	RW	n.a.
+
+1801:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RW	0
+
+1801:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x1234     0x0        0xFFFF     ms	u16	RW	n.a.
+
+
+
+Record - 1802 - Transmit PDO Communication Parameter 3:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1802:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x05       0x02       0x06       	u8	RO	n.a.
+
+1802:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000380 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+1802:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+1802:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0000     0xFFFF     100 us	u16	RW	n.a.
+
+1802:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RW	0
+
+1802:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	n.a.
+
+
+
+Record - 1803 - Transmit PDO Communication Parameter 4:
+---------------------------------------------------------------------------
+It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.
+1803:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x05       0x02       0x06       	u8	RO	n.a.
+
+1803:001 COB-ID
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00000480 0x00000001 0xFFFFFFFF 	u32	RW	n.a.
+
+1803:002 Transmission Type
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0xFE       0x00       0xFF       	u8	RW	n.a.
+
+1803:003 Inhibit Time
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0000     0xFFFF     100 us	u16	RW	n.a.
+
+1803:004 Compatibility Entry
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00       0xFF       	u8	RW	0
+
+1803:005 Event Timer
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0xFFFF     ms	u16	RW	n.a.
+
+
+
+Record - 1A00 - Transmit PDO Mapping Parameter 1:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.
+1A00:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x02       0x0        0xFF       	u8	RO	n.a.
+
+1A00:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20000020 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1A00:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20020010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1A01 - Transmit PDO Mapping Parameter 2:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.
+1A01:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x02       0x0        0xFF       	u8	RO	n.a.
+
+1A01:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20060010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+1A01:002 Mapping Entry 2
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20070010 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1A02 - Transmit PDO Mapping Parameter 3:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.
+1A02:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x01       0x0        0xFF       	u8	RO	n.a.
+
+1A02:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x20010020 0x0        0xFFFFFFFF 	u32	RO	n.a.
+
+
+
+Record - 1A03 - Transmit PDO Mapping Parameter 4:
+---------------------------------------------------------------------------
+Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.
+1A03:000 Number of Entries
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x01       0x0        0xFF       	u8	RO	n.a.
+
+1A03:001 Mapping Entry 1
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x200C0020 0x00000000 0xFFFFFFFF 	u32	RO	n.a.
+
+
+Manufacturer Segment
+
+
+Variable - 2000 - statusmap:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x00000000 0xFFFFFFFF 	u32	RO	1
+
+
+
+Variable - 2001 - errormap:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00000000 0xFFFFFFFF 	u32	RO	1
+
+
+
+Variable - 2002 - logicmap:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0xFFFF     	u16	RO	1
+
+
+
+Variable - 2003 - posref:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x80000000 0x7FFFFFFF 	i32	RW	1
+
+
+
+Variable - 2004 - speedref:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x8000     0x7FFF     	i16	RW	1
+
+
+
+Variable - 2005 - speedlimit:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0x7FFF     	u16	RW	1
+
+
+
+Variable - 2006 - speedactual:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x8000     0x7FFF     	i16	RO	1
+
+
+
+Variable - 2007 - currentactual:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x8000     0x7FFF     	i16	RO	1
+
+
+
+Variable - 2008 - serien_nummer:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x00000000 0xFFFFFFFF 	u32	RO	0
+
+
+
+Variable - 2009 - axis:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00                             	vstr	RW	0
+
+
+
+Variable - 200A - calibrate:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x0        0x0        0x1        	bool	RW	1
+
+
+
+Variable - 200B - version:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0xFFFF     	u16	RO	0
+
+
+
+Variable - 200C - posactual:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x80000000 0x7FFFFFFF 	i32	RO	1
+
+
+
+Variable - 200D - rampacc:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0xFFFF     	u16	RW	1
+
+
+
+Variable - 200E - rampdec:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0xFFFF     	u16	RW	1
+
+
+
+Variable - 200F - ramplim:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0xFFFF     	u16	RW	1
+
+
+
+Variable - 2010 - cancel_error:
+---------------------------------------------------------------------------
+
+Value      Min         Max         Unit	Type	Access	Mapping
+0x00       0x0000     0xFFFF     	u16	RW	1
+
+
+
+
+-- Abbreviations --
+
+
+bool		BOOLEAN
+i8		INTEGER8
+i16		INTEGER16
+i32		INTEGER32
+u8		UNSIGNED8
+u16		UNSIGNED16
+u32		UNSIGNED32
+r32		REAL32
+vstr		VISIBLE_STRING
+ostr		OCTET_STRING
+dom		DOMAIN
+n.a.		not allowed
+
+
+
+
+This document was created using CANopen Design Tool 2.2.35 by port GmbH.

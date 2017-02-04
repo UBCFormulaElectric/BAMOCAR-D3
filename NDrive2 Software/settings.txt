@@ -1,0 +1,12 @@
+//--------------------------------------------------------------
+
+defaultFirmware=462
+
+include=settings\regid.txt
+include=settings\globals.txt
+include=<optional>..\debug\debug.txt
+include=settings\default_style.txt
+include=settings\pages.txt
+include=settings\dropdown.txt
+
+//--------------------------------------------------------------

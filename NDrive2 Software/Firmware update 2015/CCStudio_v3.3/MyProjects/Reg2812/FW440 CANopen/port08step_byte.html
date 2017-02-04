@@ -1,0 +1,3682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title> port08step_byte Documentation </title>
+<style type="text/css">
+
+body {
+    background-color:#ffffff;
+    color:#000000;
+    font-family:Helvetica, Arial;
+    font-weight:normal;
+    text-decoration:none;
+    margin: 0px 20px 0px 20px; 
+}
+
+a a.content {
+    font-family: sans-serif;
+    color: #036;
+    text-decoration:none;
+}
+
+A:link {
+    text-decoration: none;
+    color: #036;
+}
+
+A:visited {
+    text-decoration: none;
+    color: #036;
+}
+
+A:active {
+    text-decoration: none;
+    color: #F30;
+}
+
+A:hover {
+    text-decoration: none;
+    font-style:italic;
+    font-weight: bold;
+    color: #036;
+}
+
+A.offsite {
+    text-decoration: none;
+    color: #C30;
+} 
+
+H1 {
+    font-family:Helvetica, Arial;
+    font-size: 36;
+}
+H2 {
+    font-family:Helvetica, Arial;
+    font-size: 24;
+}
+H3 {
+    font-family:Helvetica, Arial;
+    font-size: 20;
+    background: #EFE0b3;
+    border: 1 solid ;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 2px;
+}
+H4 {
+    font-family:Helvetica, Arial;
+    font-size: 18;
+    background: #FFF0b3;
+    border: 1 solid ;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+}
+H5 {
+    font-family:Helvetica, Arial;
+    font-size: 16;
+    background: #FFF0d3;
+    border: 1 dotted ;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 6px;
+}
+
+H6 {
+    font-family:Helvetica, Arial;
+    font-size: 14;
+    text-transform:uppercase;
+}
+
+@media screen {
+    .port {
+	position: fixed;
+	background-color: red;
+	color: white;
+	font-family:serif;
+	font-style:italic;
+	left: 0px;
+	right:0px;
+	bottom:0px;
+	text-align: center;
+	margin: 20px 0px 0px 0px;
+    }
+
+    .logo {
+	position: fixed;
+	right:50px;
+	top:50px;
+	text-align: center;
+    }
+}
+
+toc1 {
+    position: fixed;
+    width: 10em;
+    height: auto;
+    top: 15%;
+    right: auto;
+    bottom: 100px;
+    left: 0;
+}
+
+main1 {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 15%;
+    right: 0;
+    bottom: 100px;
+    left: 10em;
+}
+
+globalEDS baudrates dummymap otherset {
+    border: 2px solid black;
+    width: 400;
+    margin: 10px 10em 10px;
+}
+
+.objdescr {
+
+}
+
+.objdesc, .entrydesc {
+    border: 2px solid black;
+    width: 400;
+    left: 15em;
+    margin: 0px 10em 15px;
+}
+td {
+    border: 1px solid black;
+    width: 200;
+    text-indent: 5px;
+}
+
+pre {
+   font-size:12;
+   font-weight: light;
+   font-family: Arial, Helvetica;
+}
+
+ghwconf colibconf lhwconf {
+    font-family: Courier;
+    font-size: 12;
+    margin: 10px 14em 10px;
+
+}
+
+@media print {
+    .port {
+        background-color: red;
+        color: white;
+        font-family:serif;
+        font-style:italic;
+        left: 0px;
+        right:0px;
+        bottom:0px;
+        text-align: center;
+        margin: 20px 0px 0px 0px;
+    }
+
+    .logo {
+        right:50px;
+        top:50px;
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="logo">
+<img src="canopen.png" alt="CANopen Logo"/>
+</div>
+<a name="top"> </a>
+<h1>Documentation port08step_byte</h1>
+<h2>Description</h2>
+<div class="globalEds">
+CANopen device using port's CANopen library
+</div>
+<h2>Hardware Configuration</h2>
+<div class="globalEds">
+Active configuration: 0 <br />
+Used CPU/OS: TMS320 <br />
+Used CAN controller: ECAN <br />
+</div>
+<h2> Line 0 </h2>
+<a name="line0"> </a>
+<ul>
+<li> <a href="#seg1_0">Communication Segment</a></li>
+<li> <a href="#seg2_0">Manufacturer  specific Segment</a></li>
+<li> <a href="#seg3_0">Device Profile Segment</a></li>
+</ul>
+<h2> Table of Objects - Line 0 </h2>
+<ul>
+<li> <a href="#ind0_1000">1000  - Device Type</a>
+<li> <a href="#ind0_1001">1001  - Error Register</a>
+<li> <a href="#ind0_1003">1003  - Pre-defined Error Field</a>
+<li> <a href="#ind0_1005">1005  - COB-ID SYNC</a>
+<li> <a href="#ind0_1014">1014  - COB-ID EMCY</a>
+<li> <a href="#ind0_1016">1016  - Heartbeat Consumer Entries</a>
+<li> <a href="#ind0_1017">1017  - Producer Heartbeat Time</a>
+<li> <a href="#ind0_1018">1018  - Identity Object</a>
+<li> <a href="#ind0_1200">1200  - Server SDO Parameter 1</a>
+<li> <a href="#ind0_1400">1400  - Receive PDO Communication Parameter 1</a>
+<li> <a href="#ind0_1401">1401  - Receive PDO Communication Parameter 2</a>
+<li> <a href="#ind0_1402">1402  - Receive PDO Communication Parameter 3</a>
+<li> <a href="#ind0_1403">1403  - Receive PDO Communication Parameter 4</a>
+<li> <a href="#ind0_1600">1600  - Receive PDO Mapping Parameter 1</a>
+<li> <a href="#ind0_1601">1601  - Receive PDO Mapping Parameter 2</a>
+<li> <a href="#ind0_1602">1602  - Receive PDO Mapping Parameter 3</a>
+<li> <a href="#ind0_1603">1603  - Receive PDO Mapping Parameter 4</a>
+<li> <a href="#ind0_1800">1800  - Transmit PDO Communication Parameter 1</a>
+<li> <a href="#ind0_1801">1801  - Transmit PDO Communication Parameter 2</a>
+<li> <a href="#ind0_1802">1802  - Transmit PDO Communication Parameter 3</a>
+<li> <a href="#ind0_1803">1803  - Transmit PDO Communication Parameter 4</a>
+<li> <a href="#ind0_1A00">1A00  - Transmit PDO Mapping Parameter 1</a>
+<li> <a href="#ind0_1A01">1A01  - Transmit PDO Mapping Parameter 2</a>
+<li> <a href="#ind0_1A02">1A02  - Transmit PDO Mapping Parameter 3</a>
+<li> <a href="#ind0_1A03">1A03  - Transmit PDO Mapping Parameter 4</a>
+<li> <a href="#ind0_2000">2000  - statusmap</a>
+<li> <a href="#ind0_2001">2001  - errormap</a>
+<li> <a href="#ind0_2002">2002  - logicmap</a>
+<li> <a href="#ind0_2003">2003  - posref</a>
+<li> <a href="#ind0_2004">2004  - speedref</a>
+<li> <a href="#ind0_2005">2005  - speedlimit</a>
+<li> <a href="#ind0_2006">2006  - speedactual</a>
+<li> <a href="#ind0_2007">2007  - currentactual</a>
+<li> <a href="#ind0_2008">2008  - serien_nummer</a>
+<li> <a href="#ind0_2009">2009  - axis</a>
+<li> <a href="#ind0_200A">200A  - calibrate</a>
+<li> <a href="#ind0_200B">200B  - version</a>
+<li> <a href="#ind0_200C">200C  - posactual</a>
+<li> <a href="#ind0_200D">200D  - rampacc</a>
+<li> <a href="#ind0_200E">200E  - rampdec</a>
+<li> <a href="#ind0_200F">200F  - ramplim</a>
+<li> <a href="#ind0_2010">2010  - cancel_error</a>
+</ul> <br />
+<a href="#top"> [ Top ] </a> <a href="#line0"> [ Top of line ] </a>
+<a name="ind0_1000"> </a>
+<a name="seg1_0"></a>
+<h3>Communication Segment</h3>
+<div class="object">
+<h5>Object 1000h: Device Type</h5>
+<pre>The device type specifies the kind of device.
+The lower 16 bit contain the device profile number
+and the upper 16 bit an additional information.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1000 Device Type">
+<tr>
+<td>INDEX</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Device Type</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1000 000">
+<tr>
+<td>Access</td>
+<td>CONST</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0000000</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1001"> </a>
+<div class="object">
+<h5>Object 1001h: Error Register</h5>
+<pre>The error register is a field of 8 bits, each for a certain error type.
+If an error occurs the bit has to be set.
+ 
+Bit Meaning
+0  generic error
+1  current
+2  voltage
+3  temperature
+4  communication error (overrun, error state)
+5  device profile specific
+6  reserved
+7  manufacturer specific</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1001 Error Register">
+<tr>
+<td>INDEX</td>
+<td>1001</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Error Register</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1001 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1003"> </a>
+<div class="object">
+<h5>Object 1003h: Pre-defined Error Field</h5>
+<pre>This object holds errors that have occurred on the device and
+have been signalled via Emergency Object. It is an error history.
+Writing to sub index 0 deletes the entire error history.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1003 Pre-defined Error Field">
+<tr>
+<td>INDEX</td>
+<td>1003</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Pre-defined Error Field</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Array</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1003 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Errors</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000000</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1003 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Standard Error Field</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1005"> </a>
+<div class="object">
+<h5>Object 1005h: COB-ID SYNC</h5>
+<pre>COB-ID of the Synchronization object.
+The device generates a SYNC message if bit 30 is set.
+The meaning of other bits is equal to the other communication objects.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1005 COB-ID SYNC">
+<tr>
+<td>INDEX</td>
+<td>1005</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>COB-ID SYNC</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1005 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x80000080</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1014"> </a>
+<div class="object">
+<h5>Object 1014h: COB-ID EMCY</h5>
+<pre>COB-ID used for emergency message (Emergency Producer).</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1014 COB-ID EMCY">
+<tr>
+<td>INDEX</td>
+<td>1014</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>COB-ID EMCY</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1014 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000080</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1016"> </a>
+<div class="object">
+<h5>Object 1016h: Heartbeat Consumer Entries</h5>
+<pre>The consumer heartbeat time defines the expected heartbeat cycle
+time and thus has to be higher than the corresponding producer heartbeat
+time configured on the device producing this heartbeat.
+
+The bits 31 - 24 of each sub-index has to be 0.
+The bits 23 - 16 contain the node-id.
+The lower 16 bits contain the heartbeat time</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1016 Heartbeat Consumer Entries">
+<tr>
+<td>INDEX</td>
+<td>1016</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Heartbeat Consumer Entries</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Array</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1016 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x01</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1016 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Consumer Heartbeat Time 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000000</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1017"> </a>
+<div class="object">
+<h5>Object 1017h: Producer Heartbeat Time</h5>
+<pre>The producer heartbeat time defines the cycle 
+time of the heartbeat. If the time is 0 it is not used.
+The time has to be a multiple of 1 msec</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1017 Producer Heartbeat Time">
+<tr>
+<td>INDEX</td>
+<td>1017</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Producer Heartbeat Time</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1017 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000000</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1018"> </a>
+<div class="object">
+<h5>Object 1018h: Identity Object</h5>
+<pre>This object contains general information about the
+device.
+Sub-Index 1 contains a unique value allocated each manufacturer.
+Sub-Index 2 identifies the manufacturer specific product code (device version).
+Sub-Index 3 contains the revision number.
+Bit 31-16 is the major revision number and Bit 15-0 the minor revision number.
+Sub-Index 4 identifies a manufacturer specific serial number.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1018 Identity Object">
+<tr>
+<td>INDEX</td>
+<td>1018</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Identity Object</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>IDENTITY</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1018 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>number of entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x4</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1018 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Vendor Id</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x02e7</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1018 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Product Code</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1018 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Revision number</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1018 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Serial number</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1200"> </a>
+<div class="object">
+<h5>Object 1200h: Server SDO Parameter 1</h5>
+<pre>The object contains the parameters for the SDOs for which
+the device is the server.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1200 Server SDO Parameter 1">
+<tr>
+<td>INDEX</td>
+<td>1200</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Server SDO Parameter 1</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>SDO_PARAMETER</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1200 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x02</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1200 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID Client -> Server</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000600</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1200 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID Server -> Client</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000580</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1400"> </a>
+<div class="object">
+<h5>Object 1400h: Receive PDO Communication Parameter 1</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1400 Receive PDO Communication Parameter 1">
+<tr>
+<td>INDEX</td>
+<td>1400</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Communication Parameter 1</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1400 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x05</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1400 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x200</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1400 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1400 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Inhibit Time</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>100 us</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1400 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Compatibility Entry</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1400 005">
+<tr>
+<td>Sub-Index</td>
+<td>005</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Event Timer</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x100</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>ms</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1401"> </a>
+<div class="object">
+<h5>Object 1401h: Receive PDO Communication Parameter 2</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1401 Receive PDO Communication Parameter 2">
+<tr>
+<td>INDEX</td>
+<td>1401</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Communication Parameter 2</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1401 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x02</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1401 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000300</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1401 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1402"> </a>
+<div class="object">
+<h5>Object 1402h: Receive PDO Communication Parameter 3</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1402 Receive PDO Communication Parameter 3">
+<tr>
+<td>INDEX</td>
+<td>1402</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Communication Parameter 3</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1402 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x02</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1402 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000400</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1402 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1403"> </a>
+<div class="object">
+<h5>Object 1403h: Receive PDO Communication Parameter 4</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to receive.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The  transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1403 Receive PDO Communication Parameter 4">
+<tr>
+<td>INDEX</td>
+<td>1403</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Communication Parameter 4</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1403 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x05</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1403 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000500</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1403 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1403 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Inhibit Time</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>100 us</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1403 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Compatibility Entry</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1403 005">
+<tr>
+<td>Sub-Index</td>
+<td>005</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Event Timer</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>ms</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1600"> </a>
+<div class="object">
+<h5>Object 1600h: Receive PDO Mapping Parameter 1</h5>
+<pre>The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1600 Receive PDO Mapping Parameter 1">
+<tr>
+<td>INDEX</td>
+<td>1600</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Mapping Parameter 1</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1600 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x01</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1600 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2003">0x20030020</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1601"> </a>
+<div class="object">
+<h5>Object 1601h: Receive PDO Mapping Parameter 2</h5>
+<pre>The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1601 Receive PDO Mapping Parameter 2">
+<tr>
+<td>INDEX</td>
+<td>1601</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Mapping Parameter 2</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1601 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x01</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1601 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2004">0x20040010</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1602"> </a>
+<div class="object">
+<h5>Object 1602h: Receive PDO Mapping Parameter 3</h5>
+<pre>The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1602 Receive PDO Mapping Parameter 3">
+<tr>
+<td>INDEX</td>
+<td>1602</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Mapping Parameter 3</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1602 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x04</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1602 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2005">0x20050010</a></td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1602 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 2</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_200D">0x200D0010</a></td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1602 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 3</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_200E">0x200E0010</a></td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1602 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 4</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_200F">0x200F0010</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1603"> </a>
+<div class="object">
+<h5>Object 1603h: Receive PDO Mapping Parameter 4</h5>
+<pre>The sub-indices contain the indices, the sub-indices and the
+lengths of the mapped sub-indices.
+
+Their structure is as follows:
+index (16bit)   sub-index (8bit)   length (8bit)</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1603 Receive PDO Mapping Parameter 4">
+<tr>
+<td>INDEX</td>
+<td>1603</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Receive PDO Mapping Parameter 4</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1603 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x01</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1603 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2010">0x20100010</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1800"> </a>
+<div class="object">
+<h5>Object 1800h: Transmit PDO Communication Parameter 1</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1800 Transmit PDO Communication Parameter 1">
+<tr>
+<td>INDEX</td>
+<td>1800</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Communication Parameter 1</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1800 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x05</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1800 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000180</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1800 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1800 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Inhibit Time</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>100 us</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1800 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Compatibility Entry</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1800 005">
+<tr>
+<td>Sub-Index</td>
+<td>005</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Event Timer</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>ms</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1801"> </a>
+<div class="object">
+<h5>Object 1801h: Transmit PDO Communication Parameter 2</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1801 Transmit PDO Communication Parameter 2">
+<tr>
+<td>INDEX</td>
+<td>1801</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Communication Parameter 2</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1801 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x05</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1801 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000280</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1801 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1801 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Inhibit Time</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>100 us</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1801 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Compatibility Entry</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1801 005">
+<tr>
+<td>Sub-Index</td>
+<td>005</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Event Timer</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x1234</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>ms</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1802"> </a>
+<div class="object">
+<h5>Object 1802h: Transmit PDO Communication Parameter 3</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1802 Transmit PDO Communication Parameter 3">
+<tr>
+<td>INDEX</td>
+<td>1802</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Communication Parameter 3</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1802 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x05</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1802 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000380</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1802 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1802 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Inhibit Time</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>100 us</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1802 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Compatibility Entry</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1802 005">
+<tr>
+<td>Sub-Index</td>
+<td>005</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Event Timer</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>ms</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1803"> </a>
+<div class="object">
+<h5>Object 1803h: Transmit PDO Communication Parameter 4</h5>
+<pre>It contains the communication parameters of the current PDO
+the device is able to transmit.
+Sub-index 0 contains the number of PDO-parameters implemented.
+Sub index 1 describes the COB-ID. If bit 31 is set the PDO is disabled.
+The transmission mode is defined by sub-index 2.
+An inhibit time can be defined on sub-index 3 in 100 us.
+At the 5th sub-index can be defined a event time for asynchron pdos.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1803 Transmit PDO Communication Parameter 4">
+<tr>
+<td>INDEX</td>
+<td>1803</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Communication Parameter 4</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_COMM_PAR</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1803 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x05</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1803 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>COB-ID</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00000480</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1803 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Transmission Type</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0xFE</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1803 003">
+<tr>
+<td>Sub-Index</td>
+<td>003</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Inhibit Time</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>100 us</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1803 004">
+<tr>
+<td>Sub-Index</td>
+<td>004</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Compatibility Entry</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED8</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1803 005">
+<tr>
+<td>Sub-Index</td>
+<td>005</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Event Timer</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>ms</td>
+</tr>
+</table>
+</div>
+<a name="ind0_1A00"> </a>
+<div class="object">
+<h5>Object 1A00h: Transmit PDO Mapping Parameter 1</h5>
+<pre>Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1A00 Transmit PDO Mapping Parameter 1">
+<tr>
+<td>INDEX</td>
+<td>1A00</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Mapping Parameter 1</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A00 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x02</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A00 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2000">0x20000020</a></td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A00 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 2</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2002">0x20020010</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1A01"> </a>
+<div class="object">
+<h5>Object 1A01h: Transmit PDO Mapping Parameter 2</h5>
+<pre>Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1A01 Transmit PDO Mapping Parameter 2">
+<tr>
+<td>INDEX</td>
+<td>1A01</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Mapping Parameter 2</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A01 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x02</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A01 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2006">0x20060010</a></td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A01 002">
+<tr>
+<td>Sub-Index</td>
+<td>002</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 2</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2007">0x20070010</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1A02"> </a>
+<div class="object">
+<h5>Object 1A02h: Transmit PDO Mapping Parameter 3</h5>
+<pre>Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1A02 Transmit PDO Mapping Parameter 3">
+<tr>
+<td>INDEX</td>
+<td>1A02</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Mapping Parameter 3</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A02 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x01</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A02 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_2001">0x20010020</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_1A03"> </a>
+<div class="object">
+<h5>Object 1A03h: Transmit PDO Mapping Parameter 4</h5>
+<pre>Contains the mapping for the PDOs the device is able to transmit.
+The type of the PDO mapping parameter is at index 21h.
+The subindex 0h contains the number of valid entires within the mapping record.
+This number of entries is also the number of the application variables
+which shall be transmitted with the corresponding PDO.
+The subindicex from 1h to number of entries contain the information
+about the mapped application variables.
+These entries describe the PDO contents by their index, subindex and length.
+Allthree values are hexa-decimal coded.
+The length entry contains the length of the object in bits (1..40h).
+This parameter can be used to verify the overall mapping length. It is mandatory.</pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 1A03 Transmit PDO Mapping Parameter 4">
+<tr>
+<td>INDEX</td>
+<td>1A03</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Transmit PDO Mapping Parameter 4</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Record</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>PDO_MAPPING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A03 000">
+<tr>
+<td>Sub-Index</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Number of Entries</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x01</td>
+</tr>
+</table>
+<table class="entrydesc" cellspacing="0"  summary="Entry 1A03 001">
+<tr>
+<td>Sub-Index</td>
+<td>001</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Mapping Entry 1</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td><a href="#ind0_200C">0x200C0020</a></td>
+</tr>
+</table>
+</div>
+<a name="ind0_2000"> </a>
+<a name="seg2_0"></a>
+<h3>Manufacturer Segment</h3>
+<div class="object">
+<h5>Object 2000h: statusmap</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2000 statusmap">
+<tr>
+<td>INDEX</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>statusmap</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2000 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2001"> </a>
+<div class="object">
+<h5>Object 2001h: errormap</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2001 errormap">
+<tr>
+<td>INDEX</td>
+<td>2001</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>errormap</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2001 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2002"> </a>
+<div class="object">
+<h5>Object 2002h: logicmap</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2002 logicmap">
+<tr>
+<td>INDEX</td>
+<td>2002</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>logicmap</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2002 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2003"> </a>
+<div class="object">
+<h5>Object 2003h: posref</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2003 posref">
+<tr>
+<td>INDEX</td>
+<td>2003</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>posref</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>INTEGER32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2003 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2004"> </a>
+<div class="object">
+<h5>Object 2004h: speedref</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2004 speedref">
+<tr>
+<td>INDEX</td>
+<td>2004</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>speedref</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>INTEGER16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2004 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2005"> </a>
+<div class="object">
+<h5>Object 2005h: speedlimit</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2005 speedlimit">
+<tr>
+<td>INDEX</td>
+<td>2005</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>speedlimit</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2005 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2006"> </a>
+<div class="object">
+<h5>Object 2006h: speedactual</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2006 speedactual">
+<tr>
+<td>INDEX</td>
+<td>2006</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>speedactual</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>INTEGER16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2006 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2007"> </a>
+<div class="object">
+<h5>Object 2007h: currentactual</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2007 currentactual">
+<tr>
+<td>INDEX</td>
+<td>2007</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>currentactual</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>INTEGER16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2007 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2008"> </a>
+<div class="object">
+<h5>Object 2008h: serien_nummer</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2008 serien_nummer">
+<tr>
+<td>INDEX</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>serien_nummer</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2008 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2009"> </a>
+<div class="object">
+<h5>Object 2009h: axis</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2009 axis">
+<tr>
+<td>INDEX</td>
+<td>2009</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>axis</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>VISIBLE_STRING</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2009 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_200A"> </a>
+<div class="object">
+<h5>Object 200Ah: calibrate</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 200A calibrate">
+<tr>
+<td>INDEX</td>
+<td>200A</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>calibrate</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>BOOLEAN</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 200A 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x0</td>
+</tr>
+</table>
+</div>
+<a name="ind0_200B"> </a>
+<div class="object">
+<h5>Object 200Bh: version</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 200B version">
+<tr>
+<td>INDEX</td>
+<td>200B</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>version</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 200B 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_200C"> </a>
+<div class="object">
+<h5>Object 200Ch: posactual</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 200C posactual">
+<tr>
+<td>INDEX</td>
+<td>200C</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>posactual</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>INTEGER32</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 200C 000">
+<tr>
+<td>Access</td>
+<td>RO</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_200D"> </a>
+<div class="object">
+<h5>Object 200Dh: rampacc</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 200D rampacc">
+<tr>
+<td>INDEX</td>
+<td>200D</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>rampacc</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 200D 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_200E"> </a>
+<div class="object">
+<h5>Object 200Eh: rampdec</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 200E rampdec">
+<tr>
+<td>INDEX</td>
+<td>200E</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>rampdec</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 200E 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_200F"> </a>
+<div class="object">
+<h5>Object 200Fh: ramplim</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 200F ramplim">
+<tr>
+<td>INDEX</td>
+<td>200F</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>ramplim</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 200F 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<a name="ind0_2010"> </a>
+<div class="object">
+<h5>Object 2010h: cancel_error</h5>
+<pre></pre>
+<h6>Object Description</h6>
+<table class="objdesc" cellspacing="0"  summary="Object 2010 cancel_error">
+<tr>
+<td>INDEX</td>
+<td>2010</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>cancel_error</td>
+</tr>
+<tr>
+<td>Object Code</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>UNSIGNED16</td>
+</tr>
+</table>
+<h6>Entry Description</h6>
+<table class="entrydesc" cellspacing="0"  summary="Entry 2010 000">
+<tr>
+<td>Access</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>PDO Mapping</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Default Value</td>
+<td>0x00</td>
+</tr>
+</table>
+</div>
+<br /><br /> <br /><br />
+<div class="port">
+This document was created using Design Tool of<br>
+<a href="http://www.port.de">port GmbH</a>,
+Regensburger Str. 7b, 06132 Halle, 25 Apr 2012
+</div>
+</body>
+</html>

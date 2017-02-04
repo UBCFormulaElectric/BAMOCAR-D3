@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\D\dsp\work\SDFlashSerial_v3.1_2007Mar16\sdflash\myprojects\sdf28xx_v3_3_serial\f28015\f28015FlashTest\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="F28015FlashTest.asm"
+Source="F28015.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -fr".\Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr"C:\D\dsp\work\SDFlashSerial_v3.1_2007Mar16\sdflash\myprojects\sdf28xx_v3_3_serial\f28015\f28015FlashTest\Release" -d"LARGE_MODEL" -ml -v28
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v28
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v28
+
+["Linker" Settings: "Debug"]
+Options=-q -m".\Debug\F28015FlashTest.map" -o".\Debug\F28015FlashTest.out" -w -x
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\flash_test.map" -o".\Release\flash_test.out" -w -x
+
+["F28015.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["F28015.cmd" Settings: "Release"]
+LinkOrder=1
+
