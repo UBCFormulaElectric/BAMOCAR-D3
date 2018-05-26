@@ -1,6 +1,9 @@
 //--------------------------------------------------------------
+defaultFirmware=474
+defaultLanguage=en;de
+defaultBaudrate= 115200
 
-defaultFirmware=462
+preventPCEnergySaving=1
 
 include=settings\regid.txt
 include=settings\globals.txt
@@ -8,5 +11,6 @@ include=<optional>..\debug\debug.txt
 include=settings\default_style.txt
 include=settings\pages.txt
 include=settings\dropdown.txt
+include=<optional>..\debug\settings\dropdown_dbg.txt
 
 //--------------------------------------------------------------

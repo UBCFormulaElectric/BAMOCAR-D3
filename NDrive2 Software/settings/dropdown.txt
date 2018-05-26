@@ -1,9 +1,10 @@
 //--------------------------------------------------------------
 
-extraTrackDropDown=	regid="0xeb h"	name=REGID_VDC_BUS	firmware=1004-9999
-extraTrackDropDown=	regid="0x66 h"	name=REGID_VDC_BUS	firmware=1004-9999
+sharedDropDown=		regid="0xeb h"	name=REGID_VDC_BUS		firmware=1004-9999
 
-extraOsciDropDown=	regid="0xeb h"	name=REGID_VDC_BUS	firmware=1004-9999
-extraOsciDropDown=	regid="0x66 h"	name=REGID_VDC_BAT	firmware=1004-9999
+extraTrackDropDown=	regid="0x66 h"	name=REGID_VDC_BUS		firmware=1004-9999
+
+extraOsciDropDown=	regid="0x66 h"	name=REGID_VDC_BAT		firmware=1004-9999
+extraOsciDropDown=	regid="0x9b h"	name=REGID_VDC_BAT		firmware=1004-9999
 
 //--------------------------------------------------------------

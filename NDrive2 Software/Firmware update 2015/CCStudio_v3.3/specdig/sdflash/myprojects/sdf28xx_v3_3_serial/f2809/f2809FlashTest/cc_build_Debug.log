@@ -1,8 +1,0 @@
--------------------------  F2809FlashTest.pjt - Debug  -------------------------
-[F2809FlashTest.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -fr"./Debug" -d"_DEBUG" -d"LARGE_MODEL" -ml -v28 -@"Debug.lkf" "F2809FlashTest.asm"
-
-[Linking...] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -@"Debug.lkf"
-<Linking>
-
-Build Complete,
-  0 Errors, 0 Warnings, 0 Remarks.
