@@ -1,0 +1,116 @@
+# Empty lines or lines with a # as first char are ignored
+#
+
+# The values below are just for testing!
+
+# Put the numbers of registers to save into this file
+# The format is simple: one register per line.
+# All values must be decimal.
+# Liste für die ausgewählten Register.
+# Die Parameternummer (hex 0x31) muß in der Liste als Dezimalwert (49) eingegeben werden.
+#Beispiele
+# 0x37
+#55
+# 32bit
+# REGID_POS_ACTUAL 0x6d
+#109
+# 32bit unsigned
+# REGID_MPOS1_IST 0x42
+#66
+# 16bit unsigned
+# REGID_POS_ZEROCAPTURE 0x74
+#116
+
+49
+50
+48
+38
+32
+110
+145
+109
+228
+229
+230
+231
+232
+224
+225
+226
+227
+242
+243
+245
+244
+233
+234
+235
+236
+92
+209
+210
+211
+212
+213
+214
+89
+79
+77
+78
+241
+166
+167
+68
+99
+98
+248
+100
+90
+101
+54
+55
+144
+104
+105
+148
+28
+29
+43
+37
+198
+196
+197
+240
+70
+44
+45
+46
+59
+53
+237
+199
+200
+178
+52
+80
+91
+94
+55
+118
+119
+117
+106
+107
+108
+113
+121
+114
+201
+202
+203
+205
+143
+64
+81
+216
+90

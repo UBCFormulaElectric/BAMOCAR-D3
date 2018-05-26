@@ -1,0 +1,44 @@
+//--------------------------------------------------------------
+softwareVersion=3.03.50
+showVersionInTitle=0
+emailAbout=0
+
+
+//title=NDrive Utility Software
+title=IMD Utility Software
+//iniFile=
+//iniFile=IMDman
+//logFile=
+
+
+imagesPath=images\unitek\;images\;images\pictograms\;images\leds\;images\logos\
+languagePath=languages\
+languageFilePrefix=NDrive;Shared;User
+startupOscilloscopeFile=lastused;settings\UniTek_default.uof
+
+helpPath=manuals\
+helpFileExtension=".pdf"
+helpFilePrefix="NDrive_"
+
+aboutIcon=logo.bmp
+aboutBuildID=1.00.001
+aboutVisit="http://www.unitek.eu/"
+emailRecipient="info@unitek.eu"
+copyright=(c)2005-2017 UniTek Industrie Elektronik GmbH
+
+homeURLClick= 0,0,0,0
+pageOrder= Home,Settings,Logic,Position,Speed,BUS,Monitor,Diagnostic,Oszilloskop,Extra
+pageOrder= defined
+
+startPage= "Settings"
+minMaxFile=""
+
+regListFile= settings\Reglist.txt
+COMWaitCommand=0
+COMWaitReply=0
+sleepGranularity=2
+
+COMFlushBeforeCommand=1
+COMReadTimeout=1
+//--------------------------------------------------------------
+

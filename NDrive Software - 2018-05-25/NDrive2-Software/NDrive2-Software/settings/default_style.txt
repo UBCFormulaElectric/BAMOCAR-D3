@@ -1,0 +1,47 @@
+//--------------------------------------------------------------
+
+//                       x                           leave free for tranparent                                            fontName="Comic Sans MS"
+GUIpara=pane             colourText=RGB(0,75,86)     colourBack=RGB(245,245,245)              fontHeight=14 fontWeight=+1 fontName="Calibri"
+GUIpara=dropDown         colourText=RGB(0,0,0)                                    fontGap=-1  fontHeight=14               fontName="Calibri"
+
+
+//text buttons
+GUIpara=button           colourText=RGB(0,0,50)      colourText=RGB(150,50,150)   fontGap=-1  fontHeight=12               fontName="Calibri"
+GUIpara=editWrite        colourText=RGB(0,0,0)       colourBack=RGB(250,240,210)  fontGap=-1  fontHeight=15 fontWeight=+1 fontName="Calibri"
+GUIpara=editRead         colourText=RGB(0,0,0)       colourBack=RGB(235,235,235)  fontGap=-1  fontHeight=15 fontWeight=+1 fontName="Calibri"
+GUIpara=editBinaryOn     colourText=RGB(255,255,255) colourBack=RGB(40,135,40)    fontGap=-1  fontHeight=12 fontWeight=+1 fontName="Calibri"
+GUIpara=editBinaryOff    colourText=RGB(55,55,20)    colourBack=RGB(185,185,185)  fontGap=-1  fontHeight=12 fontWeight=+1 fontName="Calibri"
+GUIpara=editCaption      colourText=RGB(0,0,0)                                    fontGap=-1  fontHeight=14               fontName="Calibri"
+GUIpara=editOthers       colourText=RGB(0,0,0)       colourBack=RGB(240,240,240)  fontGap=-1  fontHeight=14               fontName="Calibri"
+GUIpara=editUnits        colourText=RGB(0,70,0)                                   fontGap=-1  fontHeight=12               fontName="Calibri"
+GUIpara=gauge            colourText=RGB(0,200,0)     colourBack=RGB(255,255,255)              fontHeight=14               fontName="Calibri"
+GUIpara=infoBinaryOn     colourText=RGB(0,176,80)    colourBack=RGB(240,240,240)  fontGap=-1  fontHeight=13 fontWeight=+1 fontName="Calibri"
+GUIpara=infoBinaryOff    colourText=RGB(240,50,50)   colourBack=RGB(240,240,240)  fontGap=-1  fontHeight=13 fontWeight=+1 fontName="Calibri"
+GUIpara=bitList          colourText=RGB(0,0,0)                                    fontGap=-1  fontHeight=12               fontName="Calibri"
+
+
+//background button or background checkbox item )
+//checkbox frames        possible (enabled)           not available (disabled)     hover over                   selected
+GUIpara=buttonBackground colourText=RGB(255,0,0)      colourBack=RGB(0,0,250)      descColour=RGB(225,225,86)   unitsColour=RGB(85,245,85)    border=2
+
+//image buttons          possible (enabled)           not available (disabled)     hover over                   selected                      (transparency)
+GUIpara=buttonColour     colourText=RGB(25,80,170)    colourBack=RGB(25,80,170)    descColour=RGB(200,230,240)  unitsColour=RGB(200,150,240)  where=RGB(255,255,255)
+
+//                       title                        title background             box background               outlining
+GUIpara=staticBox        colourText=RGB(250,150,75)   colourBack=RGB(245,245,245)  descColour=RGB(245,245,245)  unitsColour=RGB(213,223,229)  spacing=2  border=2
+
+//--------------------------------------------------------------
+// defaults for backward compat
+// printRegistersPerPage=70                    clipped internally to a minimum of 20
+// printMarginTop=0
+// printMarginLeft=0                           values in printer points (1/72th of an inch)
+// printFont= fontHeight=7 fontFamily=MODERN
+
+printRegistersPerPage= 64
+printMarginTop=        30
+printMarginLeft=       30
+printFont=  fontHeight=7  fontFamily=MODERN
+
+
+//--------------------------------------------------------------
+
